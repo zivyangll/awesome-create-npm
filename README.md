@@ -15,9 +15,8 @@
 
 ```bash
 # choose one of the following methods
-$ npm init create-npm [name]
-$ npx create-npm [name]
 $ npm i -g awesome-create-npm && create-npm [name]
+$ npx create-npm [name]
 ```
 
 - use `yarn`
