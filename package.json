@@ -1,0 +1,87 @@
+{
+  "name": "awesome-create-npm",
+  "version": "0.0.1",
+  "description": "`npm init awesome-create-npm` to create a awesome npm module.",
+  "main": "index.js",
+  "bin": {
+    "awesome-create-npm": "bin/cli.js",
+    "create-npm": "bin/cli.js"
+  },
+  "files": [
+    "bin",
+    "template",
+    "saofile.js"
+  ],
+  "scripts": {
+    "lint": "eslint --fix .",
+    "test": "ava test",
+    "test:snapshot": "ava --verbose --update-snapshots test",
+    "ci": "npm run eslint-check && npm run lint && nyc ava test",
+    "contributor": "git-contributor",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add .",
+    "prepublishOnly": "np --yolo --no-publish",
+    "eslint-check": "eslint --print-config . | eslint-config-prettier-check"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zivyangll/awesome-create-npm.git"
+  },
+  "author": "zivyangll <zivyangll@gmail.com> ",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zivyangll/awesome-create-npm/issues"
+  },
+  "homepage": "https://github.com/zivyangll/awesome-create-npm#readme",
+  "dependencies": {
+    "cac": "^6.4.2",
+    "sao": "^1.6.1",
+    "update-notifier": "^3.0.1"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "^8.2.0",
+    "ava": "^2.4.0",
+    "commitlint": "^8.2.0",
+    "conventional-changelog-cli": "^2.0.11",
+    "eslint": "^6.4.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-plugin-import": "^2.18.2",
+    "git-contributor": "*",
+    "husky": "^3.0.5",
+    "lint-staged": "^9.2.5",
+    "np": "^5.1.0",
+    "nyc": "^14.1.1",
+    "prettier": "^1.18.2"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ],
+    "*.json": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "nyc": {
+    "reporter": [
+      "lcov",
+      "text"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "name": "<%= name %>",
+  "version": "0.0.1",
+  "description": "",
+  "dependencies": {},
+  "devDependencies": {
+    "@commitlint/config-conventional": "^8.2.0",
+    "commitlint": "^8.2.0",
+    "conventional-changelog-cli": "^2.0.11",
+    "eslint": "^6.4.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-plugin-import": "^2.18.2",
+    "git-contributor": "*",
+    "husky": "^3.0.5",
+    "lint-staged": "^9.2.5",
+    "np": "^5.1.0",
+    "nyc": "^14.1.1",
+    "mocha": "^6.2.0",
+    "prettier": "^1.18.2"
+  },
+  "scripts": {
+    "lint": "eslint . --fix",
+    "test": "nyc mocha",
+    "ci": "npm run lint && npm run test",
+    "contributor": "git-contributor",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add .",
+    "prepublishOnly": "np --yolo --no-publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:<%= group %>/<%= name %>.git"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ],
+    "*.json": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "bugs": {
+    "url": "https://github.com/<%= group %>/<%= name %>/issues"
+  },
+  "nyc": {
+    "reporter": [
+      "lcov",
+      "text"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "homepage": "https://github.com/<%= group %>/<%= name %>#readme",
+  "license": "MIT"
+}
