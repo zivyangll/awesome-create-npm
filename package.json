@@ -16,11 +16,10 @@
     "lint": "eslint --fix .",
     "test": "ava test",
     "test:snapshot": "ava --verbose --update-snapshots test",
-    "ci": "npm run eslint-check && npm run lint && nyc ava test",
+    "ci": "npm run lint && nyc ava test",
     "contributor": "git-contributor",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add .",
-    "prepublishOnly": "np --yolo --no-publish",
-    "eslint-check": "eslint --print-config . | eslint-config-prettier-check"
+    "prepublishOnly": "np --yolo --no-publish"
   },
   "repository": {
     "type": "git",
@@ -39,7 +38,7 @@
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^8.2.0",
-    "ava": "^2.4.0",
+    "ava": "^1.2.0",
     "commitlint": "^8.2.0",
     "conventional-changelog-cli": "^2.0.11",
     "eslint": "^6.4.0",
