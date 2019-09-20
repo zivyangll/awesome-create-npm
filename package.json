@@ -1,6 +1,6 @@
 {
   "name": "awesome-create-npm",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "`npm init awesome-create-npm` to create a awesome npm module.",
   "main": "index.js",
   "bin": {
