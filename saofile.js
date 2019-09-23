@@ -26,9 +26,19 @@ module.exports = {
     {
       type: 'add',
       files: '**',
+      filters: {
+        // only for test case, npm will ignore .gitignore
+        '.gitignore': false,
+      },
     },
     {
       type: 'move',
+      patterns: {
+        // We keep `.gitignore` as `gitignore` in the project
+        // Because when it's published to npm
+        // `.gitignore` file will be ignored!
+        gitignore: '.gitignore',
+      },
     },
   ],
   async completed() {
